@@ -250,6 +250,9 @@ jobs:
       - name: Install Packages
         run: sudo sed -i 's/azure\.//' /etc/apt/sources.list && sudo apt update && sudo apt-get install -y cmake rpm
 
+      - name: Check OpenSSL (TESTING)
+        run: openssl version
+
       - name: Generate CMakeFiles
         run: mkdir build && cd build && sudo cmake ${{matrix.cfg.cmake-options}} -DDPP_NO_VCPKG=ON -DCMAKE_BUILD_TYPE=Release -DAVX_TYPE=AVX0 ..
 
